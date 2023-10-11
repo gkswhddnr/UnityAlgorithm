@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class SGPrintShot : SGBaseShot
@@ -115,6 +116,14 @@ public class SGPrintShot : SGBaseShot
                     projectile.UpdateMove(-delayTimer);
                 }
             }
+            nowIndex++;
+            FiredShot();
+            if (nowIndex >= paintData.Count)
+            {
+                FinishedShot();
+                return;
+            }
+            delayTimer += nextLineDelay;
         }
     }
 }
